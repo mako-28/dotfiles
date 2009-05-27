@@ -1,0 +1,22 @@
+escape ^Tt
+
+vbell on
+hardstatus alwayslastline "%w"
+defhstatus "^En:^Et"
+shell -$SHELL
+startup_message off
+autodetach on
+
+defscrollback 3000
+defutf8 on
+defencoding UTF-8
+cjkwidth on
+
+logfile "/home/makoto/var/screen/%Y%m%d-%n.log"
+deflog off
+
+screen 0
+screen 1
+screen 2
+screen 3
+select 0
