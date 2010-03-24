@@ -17,7 +17,8 @@ syntax enable
 set background=dark
 
 " mouse support(normal)
-set mouse=n
+set mouse=a
+set ttymouse=xterm2
 
 " ○とか↑とかの幅。
 set ambiwidth=double
