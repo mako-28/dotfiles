@@ -19,6 +19,7 @@ set background=dark
 " mouse support(normal)
 set mouse=a
 set ttymouse=xterm2
+"set mouse=n
 
 " ○とか↑とかの幅。
 set ambiwidth=double
@@ -76,4 +77,11 @@ let &statusline .= '[%{&fileencoding == "" ? &encoding : &fileencoding}]'
 let &statusline .= '[%{&ff}]'
 let &statusline .= '  %-14.(%l,%c%V%) %P'
 set laststatus=2
+
+imap {} {}<Left>
+imap [] []<Left>
+imap () ()<Left>
+imap "" “”<Left>
+imap '' ''<Left>
+imap <> <><Left>
 
