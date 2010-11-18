@@ -44,7 +44,7 @@ title () {echo -n "\ek$*\e\\"}
 
 case ${TERM} in
 emacs*)
-  PROMPT="%{$fg[blue]%}%n@%m%{%} %{%}%1~ %# %{$reset_color%}"
+  PROMPT="%{$fg[cyan]%}%n@%m%{%} %{%}%1~ %# %{$reset_color%}"
 
   precmd () {
     echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
@@ -52,11 +52,11 @@ emacs*)
   ;;
 
 *)
-  PROMPT="%{$fg[blue]%}%n@%m%{%} %# %{$reset_color%}"
+  PROMPT="%{$fg[cyan]%}%n@%m%{%} %# %{$reset_color%}"
   RPROMPT="[%~]"
 
   precmd() {
-    PROMPT="%{%(?.$fg[blue].$fg[red])%}%n@%m%{%} %# %{$reset_color%}"
+    PROMPT="%{%(?.$fg[cyan].$fg[red])%}%n@%m%{%} %# %{$reset_color%}"
     echo -ne "\033]0;${USER}@${HOST%%.*}\007"
   }
   ;;
