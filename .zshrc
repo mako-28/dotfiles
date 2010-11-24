@@ -34,10 +34,11 @@ esac
 alias less='less -M'
 alias grep='grep --colour=auto'
 alias emacs='emacs -nw'
+alias vi='vim'
 
 PROMPT="%{$fg[green]%}%#%{$reset_color%} "
 LESS="--tabs=4 --no-init"
-EDITOR=vim
+export EDITOR=vim
 
 # Change the window title of X terminals 
 title () {echo -n "\ek$*\e\\"}
@@ -69,6 +70,13 @@ screen*)
   }
   ;;
 esac
+
+# Ctrl <--> で単語移動
+bindkey ";5C" forward-word
+bindkey ";5D" backward-word
+
+# 単語区切りから'/'を除く
+export WORDCHARS='*?[]~=&;!#$%^(){}<>'
 
 # 指定したコマンド名がなく、ディレクトリ名と一致した場合 cd する
 setopt auto_cd

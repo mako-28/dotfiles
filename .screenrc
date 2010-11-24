@@ -1,7 +1,8 @@
 escape ^Tt
 
 vbell on
-hardstatus alwayslastline "%w"
+hardstatus alwayslastline "[%02c] %-w %{.r.}%{!}%n%f%t%{dd} %+w %=  %{..r} %0`"
+
 defhstatus "^En:^Et"
 shell -$SHELL
 startup_message off
@@ -12,9 +13,10 @@ defscrollback 3000
 logfile "~/var/log/screen/%Y%m%d-%n.log"
 deflog off
 
+termcapinfo xterm 'is=\E[r\E[\E[2J\E[H\E[?7h\E[?1;4;61'
+
 screen 0
 screen 1
 screen 2
 screen 3
 select 0
-
