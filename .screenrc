@@ -1,6 +1,7 @@
 escape ^Tt
 
 vbell on
+term  xterm
 hardstatus alwayslastline "[%02c] %-w %{.r.}%{!}%n%f%t%{dd} %+w %=  %{..r} %0`"
 
 defhstatus "^En:^Et"
@@ -13,6 +14,7 @@ defscrollback 3000
 logfile "~/var/log/screen/%Y%m%d-%n.log"
 deflog off
 
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 termcapinfo xterm 'is=\E[r\E[\E[2J\E[H\E[?7h\E[?1;4;61'
 
 screen 0
