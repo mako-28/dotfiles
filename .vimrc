@@ -81,7 +81,7 @@ set laststatus=2
 imap {} {}<Left>
 imap [] []<Left>
 imap () ()<Left>
-imap "" “”<Left>
+imap "" ""<Left>
 imap '' ''<Left>
 imap <> <><Left>
 
