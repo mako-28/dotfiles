@@ -3,10 +3,13 @@ umask 022
 bindkey -e
 autoload -U compinit promptinit colors
 compinit
-
 colors
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b] (%a)'
 
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -40,34 +43,21 @@ PROMPT="%{$fg[green]%}%#%{$reset_color%} "
 LESS="--tabs=4 --no-init"
 export EDITOR=vim
 
-# Change the window title of X terminals 
-title () {echo -n "\ek$*\e\\"}
-
 case ${TERM} in
-emacs*)
-  PROMPT="%{$fg[cyan]%}%n@%m%{%} %{%}%1~ %# %{$reset_color%}"
-
-  precmd () {
-    echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-  }
-  ;;
-
 *)
-  PROMPT="%{$fg[cyan]%}%n@%m%{%} %# %{$reset_color%}"
-  RPROMPT="[%~]"
-
   precmd() {
-    PROMPT="%{%(?.$fg[cyan].$fg[red])%}%n@%m%{%} %# %{$reset_color%}"
-    echo -ne "\033]0;${USER}@${HOST%%.*}\007"
-  }
-  ;;
-esac
+    # for vcs_info
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
 
-case ${TERM} in
-screen*)
-  preexec() {
-    printf "\ek$1\e\\"
-  }
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+    PROMPT="%{%(?.$fg[cyan].$fg[red])%}%n%{$reset_color%} %% "
+    RPROMPT="[%~] %1(v|%F{green}%1v%f|)"
+
+    [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%F{yellow}<@%m>:${PROMPT}"
+
+    #echo -ne "\033]0;${USER}@${HOST%%.*}\007"
+ }
   ;;
 esac
 
