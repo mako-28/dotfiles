@@ -52,7 +52,7 @@ case ${TERM} in
 
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
     PROMPT="%{%(?.$fg[cyan].$fg[red])%}%n%{$reset_color%} %% "
-    RPROMPT="[%~] %1(v|%F{green}%1v%f|)"
+    RPROMPT="[%~] %1(v|%F{cyan}%1v%f|)"
 
     [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && PROMPT="%F{yellow}<@%m>:${PROMPT}"
 
