@@ -1,32 +1,49 @@
-" from usr_05.txt
+"" vimrcのリロードは :so %
+
 set nocompatible
 set incsearch
-set nohlsearch
+set hlsearch
+set smartcase  " 検索文字列に大文字が含まれている場合は区別して検索する
 set backspace=indent,eol,start
-set autoindent
+set autoindent " ペースト時は:a!の後にペーストするとインデントしない
 set history=50
 set ruler
 set showcmd
+set showmode
+set showmatch
 set nowrap
 set list
 set listchars=trail:-,tab:>-
-filetype plugin indent on
-
-" from usr_06.txt
+set display=uhex
+set cursorline
+set expandtab
+set tabstop=4     " >>, << でインデントレベルを変えられるよ
+set softtabstop=0 "Tabが押されたときはtabstopと同じだけのスペースを挿入
+set shiftwidth=4
 syntax enable
 set background=dark
-
-" mouse support(normal)
 set mouse=a
 set ttymouse=xterm2
-"set mouse=n
+set ambiwidth=double " ○とか↑とかの幅。
 
-" ○とか↑とかの幅。
-set ambiwidth=double
+" --- 全角スペースの表示 ---
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
+match ZenkakuSpace /　/
 
-" system encoding
+" --- ファイルタイプ別の設定 ---
+if has("autocmd")
+  filetype plugin on "ファイルタイプの検索を有効にする
+  filetype indent on "そのファイルタイプにあわせたインデントを利用する
+
+  autocmd FileType html :set indentexpr=
+  autocmd FileType xhtml :set indentexpr=
+endif
+
+" --- 文字コード関連の設定 ---
+set ffs=unix,dos,mac  " 改行文字
 set encoding=utf-8
 
+" 文字コードの自動判別
 if !exists('did_encoding_settings') && has('iconv')
   let s:enc_euc = 'euc-jp'
   let s:enc_jis = 'iso-2022-jp'
@@ -64,7 +81,6 @@ if !exists('did_encoding_settings') && has('iconv')
   let did_encoding_settings = 1
 endif
 
-
 " 日本語を含まない場合は fileencoding に encoding を使うようにする
 if has('autocmd')
   function! AU_ReCheck_FENC()
@@ -78,21 +94,23 @@ endif
 autocmd BufNewFile *.{py,php,txt,css,htm*}{,.in} set fileencoding=utf-8
 
 
-" default 'statusline' with 'fileencoding'.
+" --- ステータスラインの表示 ---
 let &statusline = ''
 let &statusline .= '%<%f %h%m%r%w'
 let &statusline .= '%='
-  "" temporary disabled.
-  "let &statusline .= '(%{' . s:SID_PREFIX() . 'vcs_branch_name(getcwd())}) '
 let &statusline .= '[%{&fileencoding == "" ? &encoding : &fileencoding}]'
 let &statusline .= '[%{&ff}]'
 let &statusline .= '  %-14.(%l,%c%V%) %P'
 set laststatus=2
 
+" --- キーマップ ---
 imap {} {}<Left>
 imap [] []<Left>
 imap () ()<Left>
 imap "" ""<Left>
 imap '' ''<Left>
 imap <> <><Left>
+nmap <ESC><ESC> :nohlsearch<CR>
 
+"コンマの後に自動的にスペースを挿入
+inoremap , ,<Space>
