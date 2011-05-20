@@ -6,6 +6,7 @@ compinit
 colors
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' formats '[%b]'
