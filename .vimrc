@@ -3,9 +3,9 @@
 set nocompatible
 set incsearch
 set hlsearch
-set smartcase  " 検索文字列に大文字が含まれている場合は区別して検索する
+set smartcase                       " 検索文字列に大文字が含まれている場合は区別して検索する
 set backspace=indent,eol,start
-set autoindent " ペースト時は:a!の後にペーストするとインデントしない
+set autoindent                      " ペースト時は:a!の後にペーストするとインデントしない
 set history=50
 set ruler
 set showcmd
@@ -17,14 +17,15 @@ set listchars=trail:-,tab:>-
 set display=uhex
 set cursorline
 set expandtab
-set tabstop=4     " >>, << でインデントレベルを変えられるよ
-set softtabstop=0 "Tabが押されたときはtabstopと同じだけのスペースを挿入
+set tabstop=4                       " >>, << でインデントレベルを変えられるよ
+set softtabstop=0                   "Tabが押されたときはtabstopと同じだけのスペースを挿入
 set shiftwidth=4
 syntax enable
 set background=dark
 set mouse=a
 set ttymouse=xterm2
-set ambiwidth=double " ○とか↑とかの幅。
+"set ambiwidth=double                " ○とか↑とかの幅。
+set nu
 
 " --- 全角スペースの表示 ---
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
@@ -91,7 +92,7 @@ if has('autocmd')
   autocmd BufReadPost * call AU_ReCheck_FENC()
 endif
 
-autocmd BufNewFile *.{py,php,txt,css,htm*}{,.in} set fileencoding=utf-8
+" autocmd BufNewFile *.{py,php,txt,css,htm*}{,.in} set fileencoding=utf-8
 
 
 " --- ステータスラインの表示 ---
@@ -104,12 +105,12 @@ let &statusline .= '  %-14.(%l,%c%V%) %P'
 set laststatus=2
 
 " --- キーマップ ---
-imap {} {}<Left>
-imap [] []<Left>
-imap () ()<Left>
-imap "" ""<Left>
-imap '' ''<Left>
-imap <> <><Left>
+imap {<Space>} {}<Left>
+imap [<Space>] []<Left>
+imap (<Space>) ()<Left>
+imap "<Space>" ""<Left>
+imap '<Space>' ''<Left>
+imap <<Space>> <><Left>
 nmap <ESC><ESC> :nohlsearch<CR>
 
 "コンマの後に自動的にスペースを挿入
