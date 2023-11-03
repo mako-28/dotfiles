@@ -1,0 +1,49 @@
+# make ssh_auth_sock for tmux/screen
+function attach_ssh_auth_sock() {
+    if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; then
+        unlink "$HOME/.ssh/agent_sock" 2>/dev/null
+        ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
+        export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
+    fi
+}
+
+# vscodeから起動されてorphanedになったjavaを止める
+function kill-java() {
+  pkill -P 1 -f "java .*/\.vscode"
+  ps -ef | grep java | grep -v grep
+}
+
+# fzf-git
+## via. https://github.com/junegunn/fzf/wiki/Examples#git
+
+# fbr - checkout git branch
+fbr() {
+  local branches branch
+  branches=$(git --no-pager branch -vv) &&
+  branch=$(echo "$branches" | fzf --ansi --reverse +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# fshow - git commit browser
+fshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
+}
+
+# 履歴検索用
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --ansi --reverse --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+
+
+# start lima with binfmt
+function limastart() {
+  (ulimit -n 1048576 && limactl start && lima sudo docker run --privileged --rm tonistiigi/binfmt --install all)
+}

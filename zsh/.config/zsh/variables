@@ -1,0 +1,5 @@
+export EDITOR=hx
+export SUDO_EDITOR=hx
+if [[ -f ${HOME}/.github_api_token ]]; then
+    export HOMEBREW_GITHUB_API_TOKEN=$(cat ${HOME}/.github_api_token)
+fi

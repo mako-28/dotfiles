@@ -1,0 +1,26 @@
+" vi: set ft=vim :
+
+" --- キーマップ ---
+"inoremap { {}<Left>
+"inoremap [ []<Left>
+"inoremap ( ()<Left>
+"inoremap " ""<Left>
+"inoremap 「 「」<Left>
+"inoremap '<Space>' ''<Left>
+"inoremap <<Space>> <><Left>
+inoremap <F5> <C-o>:w<CR>
+inoremap <C-a> <Home>
+inoremap <C-e> <End>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-d> <DEL>
+inoremap <C-k> <ESC>ld$a
+inoremap <C-/> <ESC>
+nnoremap <ESC><ESC> :nohlsearch<CR>
+
+"コンマの後に自動的にスペースを挿入
+""inoremap , ,<Space>
+
+" keymaps for markdown
+inoremap <C-j> <Space><Space><CR>
+
