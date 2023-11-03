@@ -1,0 +1,48 @@
+" vi: set ft=vim :
+
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim
+    call neobundle#begin(expand('~/.vim/bundle/'))
+endif
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" originalrepos on github
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'tyru/capture.vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kana/vim-smartinput'
+
+" colorschemes
+NeoBundle 'mrkn/mrkn256.vim'
+NeoBundle 'vim-scripts/Colour-Sampler-Pack'
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
+
+" options for plugins--------------------
+
+""emmet-vim
+let g:user_emmet_settings = {
+\   'lang' : 'ja'
+\ }
+
+

@@ -1,0 +1,33 @@
+" vi: set ft=vim :
+
+if has('autocmd')
+  " 日本語を含まない場合は fileencoding に encoding を使うようにする
+  function! AU_ReCheck_FENC()
+    if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+      let &fileencoding=&encoding
+    endif
+  endfunction
+  autocmd BufReadPost * call AU_ReCheck_FENC()
+
+  " --- ファイルタイプ別の設定 ---
+  filetype plugin on "ファイルタイプの検索を有効にする
+  filetype indent on "そのファイルタイプにあわせたインデントを利用する
+
+  autocmd FileType html :set indentexpr=
+  autocmd FileType xhtml :set indentexpr=
+
+  " autocmd BufNewFile *.{py,php,txt,css,htm*}{,.in} set fileencoding=utf-8
+
+  " md as markdown, instead of modula2
+  autocmd BufNewFile,BufRead *.{md,mkd} set filetype=markdown
+  autocmd BufNewFile,BufRead *.{md,mkd} setlocal tabstop=2
+
+  " disable highlightening texts between underscores
+  autocmd! FileType markdown hi! def link markdownItalic Normal
+
+  " js as javascript
+  autocmd BufNewFile,BufRead *.{js} set filetype=javascript
+
+  "ディレクトリを開いたファイルと同じ場所へ移動
+  autocmd BufEnter * lcd `=expand('%:p:h')`
+endif

@@ -1,0 +1,32 @@
+snippet url
+abbr [link](url)
+options word
+    [${1:#:link}](${2:#:url})${3}
+
+snippet img
+abbr ![alt](url)
+options word
+    ![${1:#:alt}](${2:#:url})
+
+snippet bold
+abbr *emphasis*
+options word
+    *${1}*${2}
+
+snippet table
+abbr table
+options word
+    ${1:#:head1}|${2:#:head2}
+    ---|---
+    ${3:#:item1}|${4:#:item2}
+
+snippet tdate
+abbr ## date topicname
+options word
+    `strftime("# %Y-%m-%d\n## %H:%M:%S")` ${1:#:topicname}
+
+snippet ttime
+abbr ## time topicname
+options word
+    `strftime("## %H:%M:%S")` ${1:#:topicname}
+

@@ -1,0 +1,8 @@
+alias tmux='tmux -2'
+alias tiga='tig --all'
+alias tigs='tig status'
+alias g='git'
+alias ls='ls --color'
+alias ll='ls -l'
+alias la='ls -a'
+alias lal='ls -al'
