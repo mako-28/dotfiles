@@ -97,7 +97,6 @@ file-types = [
 ]
 roots = []
 language-servers = [ "vscode-json-language-server" ]
-auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [[grammar]]
@@ -115,7 +114,6 @@ roots = []
 comment-token = "//"
 language-servers = [ "typescript-language-server" ]
 indent = { tab-width = 2, unit = "  " }
-auto-format = true
 
 [language.debugger]
 name = "node-debug2"
@@ -144,7 +142,6 @@ comment-token = "//"
 language-servers = [ "typescript-language-server" ]
 indent = { tab-width = 2, unit = "  " }
 grammar = "javascript"
-auto-format = true
 
 [[language]]
 name = "typescript"
@@ -156,7 +153,6 @@ shebangs = ["deno", "ts-node"]
 roots = []
 language-servers = [ "typescript-language-server" ]
 indent = { tab-width = 2, unit = "  " }
-auto-format = true
 
 [[grammar]]
 name = "typescript"
@@ -183,7 +179,6 @@ injection-regex = "css"
 file-types = ["css", "scss"]
 roots = []
 language-servers = [ "vscode-css-language-server" ]
-auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [[grammar]]
@@ -197,7 +192,6 @@ injection-regex = "scss"
 file-types = ["scss"]
 roots = []
 language-servers = [ "vscode-css-language-server" ]
-auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [[grammar]]
@@ -211,7 +205,6 @@ injection-regex = "html"
 file-types = ["html", "htm", "shtml", "xhtml", "xht", "jsp", "asp", "aspx", "jshtm", "volt", "rhtml"]
 roots = []
 language-servers = [ "vscode-html-language-server" ]
-auto-format = true
 indent = { tab-width = 2, unit = "  " }
 
 [[grammar]]
@@ -229,7 +222,6 @@ comment-token = "#"
 language-servers = [ "pylsp" ]
 # TODO: pyls needs utf-8 offsets
 indent = { tab-width = 4, unit = "    " }
-auto-format = true
 
 [[grammar]]
 name = "python"
@@ -285,7 +277,6 @@ roots = []
 comment-token = "#"
 language-servers = [ "bash-language-server" ]
 indent = { tab-width = 2, unit = "  " }
-auto-format = true
 
 [[grammar]]
 name = "bash"
@@ -299,7 +290,6 @@ file-types = ["java", "jav"]
 roots = ["pom.xml", "build.gradle", "build.gradle.kts"]
 language-servers = [ "jdtls" ]
 indent = { tab-width = 2, unit = "  " }
-auto-format = true
 
 [[grammar]]
 name = "java"
@@ -313,7 +303,6 @@ file-types = ["svelte"]
 roots = []
 indent = { tab-width = 2, unit = "  " }
 language-servers = [ "svelteserver" ]
-auto-format = true
 
 [[grammar]]
 name = "svelte"
@@ -328,7 +317,6 @@ comment-token = "#"
 indent = { tab-width = 2, unit = "  " }
 language-servers = [ "yaml-language-server", "ansible-language-server" ]
 injection-regex = "yml|yaml"
-auto-format = true
 
 [[grammar]]
 name = "yaml"
@@ -342,7 +330,6 @@ file-types = ["md", "markdown", "PULLREQ_EDITMSG", "mkd", "mdwn", "mdown", "mark
 roots = [".marksman.toml"]
 language-servers = [ "marksman" ]
 indent = { tab-width = 2, unit = "  " }
-auto-format = true
 
 [[grammar]]
 name = "markdown"
@@ -369,7 +356,6 @@ file-types = ["Dockerfile", "dockerfile", "Containerfile", "containerfile"]
 comment-token = "#"
 indent = { tab-width = 2, unit = "  " }
 language-servers = [ "docker-langserver" ]
-auto-format = true
 
 [[grammar]]
 name = "dockerfile"
@@ -434,7 +420,6 @@ file-types = [".gitmodules", ".gitconfig", { suffix = ".git/config" }, { suffix 
 injection-regex = "git-config"
 comment-token = "#"
 indent = { tab-width = 4, unit = "\t" }
-auto-format = true
 
 [[grammar]]
 name = "git-config"
@@ -461,7 +446,6 @@ file-types = [".gitignore", ".gitignore_global", ".ignore", ".prettierignore", "
 injection-regex = "git-ignore"
 comment-token = "#"
 grammar = "gitignore"
-auto-format = true
 
 [[grammar]]
 name = "gitignore"
@@ -475,7 +459,6 @@ roots = []
 comment-token = "--"
 indent = { tab-width = 4, unit = "    " }
 injection-regex = "sql"
-auto-format = true
 
 [[grammar]]
 name = "sql"
@@ -556,7 +539,6 @@ file-types = [
 ]
 indent = { tab-width = 2, unit = "  " }
 roots = []
-auto-format = true
 
 [language.auto-pairs]
 '(' = ')'
@@ -588,7 +570,6 @@ file-types = ["mermaid"]
 roots = []
 comment-token = "%%"
 indent = { tab-width = 4, unit = "    " }
-auto-format = true
 
 [[grammar]]
 name = "mermaid"
