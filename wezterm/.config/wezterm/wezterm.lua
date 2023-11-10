@@ -38,5 +38,45 @@ return {
       mods = 'LEADER',
       action = wezterm.action.PaneSelect,
     },
+    {
+      key = 'n',
+      mods = 'LEADER',
+      action = wezterm.action.ActivatePaneDirection 'Next',
+    },
+    {
+      key = 'p',
+      mods = 'LEADER',
+      action = wezterm.action.ActivatePaneDirection 'Prev',
+    },
+    {
+      key = 'h',
+      mods = 'LEADER',
+      action = wezterm.action.AdjustPaneSize { 'Left', 5 },
+    },
+    {
+      key = 'H',
+      mods = 'LEADER',
+      action = wezterm.action.AdjustPaneSize { 'Left', 30 },
+    },
+    {
+      key = 'j',
+      mods = 'LEADER',
+      action = wezterm.action.AdjustPaneSize { 'Down', 5 },
+    },
+    {
+      key = 'k',
+      mods = 'LEADER',
+      action = wezterm.action.AdjustPaneSize { 'Up', 5 },
+    },
+    {
+      key = 'l',
+      mods = 'LEADER',
+      action = wezterm.action.AdjustPaneSize { 'Right', 5 },
+    },
+    {
+      key = 'L',
+      mods = 'LEADER',
+      action = wezterm.action.AdjustPaneSize { 'Right', 30 },
+    },
   },
 }
