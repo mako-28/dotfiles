@@ -5,7 +5,7 @@ true-color = true
 cursorline = true
 color-modes = true
 auto-save = true
-mouse = false
+mouse = true
 
 [editor.file-picker]
 hidden = false
