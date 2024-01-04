@@ -90,24 +90,24 @@ let &statusline .= '  %-14.(%l,%c%V%) %P'
 set laststatus=2
 
 "tab
-source ~/.vim/rc/tabutils
+source ~/.config/vim/rc/tabutils
 
 "neobundle
-source ~/.vim/rc/neobundle
+source ~/.config/vim/rc/neobundle
 
 "autocmd
-source ~/.vim/rc/autocmd
+source ~/.config/vim/rc/autocmd
 
 "keymaps
-source ~/.vim/rc/keymaps
+source ~/.config/vim/rc/keymaps
 
 "colorscheme
 set t_Co=256
 colorscheme jellybeans
 
 "neocomplcache
-source ~/.vim/rc/neocomplecache
+source ~/.config/vim/rc/neocomplecache
 
 "neosnippet
-source ~/.vim/rc/neosnippet
+source ~/.config/vim/rc/neosnippet
 
