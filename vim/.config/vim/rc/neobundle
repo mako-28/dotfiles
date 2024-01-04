@@ -1,8 +1,8 @@
 " vi: set ft=vim :
 
 if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#begin(expand('~/.vim/bundle/'))
+    set runtimepath+=~/.config/vim/bundle/neobundle.vim
+    call neobundle#begin(expand('~/.config/vim/bundle/'))
 endif
 
 " Let NeoBundle manage NeoBundle
