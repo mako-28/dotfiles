@@ -1,6 +1,5 @@
 bash-language-server = { command = "bash-language-server", args = ["start"] }
 docker-langserver = { command = "docker-langserver", args = ["--stdio"] }
-jdtls = { command = "jdtls" }
 yaml-language-server = { command = "yaml-language-server", args = ["--stdio"] }
 marksman = { command = "marksman", args = ["server"] }
 pylsp = { command = "pylsp" }
@@ -17,6 +16,10 @@ args = ["--stdio"]
 command = "typescript-language-server"
 args = ["--stdio"]
 config.hostInfo = "helix"
+
+[language-server.jdtls]
+command = "jdtls"
+args = ["--jvm-arg=-javaagent:/Users/makoto/lima/src/gov-gis/lib/lombok.jar=ECJ", "--jvm-arg=-Xbootclasspath/a:/Users/makoto/lima/src/gov-gis/lib/lombok.jar"]
 
 [language-server.typescript-language-server.config.typescript.inlayHints]
 includeInlayEnumMemberValueHints = true
@@ -55,6 +58,13 @@ inlayHints.propertyDeclarationTypes.enabled = true
 inlayHints.functionLikeReturnTypes.enabled = true
 inlayHints.enumMemberValues.enabled = true
 inlayHints.parameterNames.enabled = "all"
+
+[language-server.efm-lsp-prettier]
+command = "efm-langserver"
+
+[language-server.efm-lsp-prettier.config]
+documentFormatting = true
+languages = { typescript = [ { formatCommand ="npx prettier --stdin-filepath ${INPUT}", formatStdin = true } ] }
 
 [[language]]
 name = "toml"
@@ -112,7 +122,7 @@ file-types = ["js", "mjs", "cjs", "rules", "es6", "pac", "jakefile"]
 shebangs = ["node"]
 roots = []
 comment-token = "//"
-language-servers = [ "typescript-language-server" ]
+language-servers = [ { name = "efm-lsp-prettier", only-features = [ "format" ] }, "typescript-language-server" ]
 indent = { tab-width = 2, unit = "  " }
 
 [language.debugger]
@@ -151,7 +161,7 @@ file-types = ["ts", "mts", "cts"]
 language-id = "typescript"
 shebangs = ["deno", "ts-node"]
 roots = []
-language-servers = [ "typescript-language-server" ]
+language-servers = [ { name = "efm-lsp-prettier", only-features = [ "format" ] }, "typescript-language-server" ]
 indent = { tab-width = 2, unit = "  " }
 
 [[grammar]]
