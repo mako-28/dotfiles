@@ -6,8 +6,12 @@ set vertical-split = no
 
 set wrap-lines = yes
 bind main    R !git rebase -i %(commit)
+bind main    <Ctrl-R> !git rebase --continue
+
 bind diff    R !git rebase -i %(commit)
+
 bind status  a !?git commit --amend
+bind main    <Ctrl-R> !git rebase --continue
 
 # Use Git's default (reverse chronological) order, never automatically
 # use topo-order for the commit graph
