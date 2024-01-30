@@ -19,4 +19,4 @@ right = ["diagnostics", "selections", "register", "position", "file-encoding", "
 insert = "bar"
 
 [editor.indent-guides]
-render = false
+render = true
