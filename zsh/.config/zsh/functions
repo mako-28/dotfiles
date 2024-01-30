@@ -45,5 +45,9 @@ function select-history() {
 
 # start lima with binfmt
 function limastart() {
-  (ulimit -n 1048576 && limactl start && lima sudo docker run --privileged --rm tonistiigi/binfmt --install all)
+  if [ -z ${1:-} ]; then
+    (ulimit -n 1048576 && limactl start default && lima sudo docker run --privileged --rm tonistiigi/binfmt --install all)
+  else
+    (ulimit -n 1048576 && limactl start $1)
+  fi
 }
