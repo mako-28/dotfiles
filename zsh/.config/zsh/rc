@@ -51,6 +51,7 @@ bindkey "^[[F" end-of-line
 
 ## plugins
 eval "$(sheldon source)"
+eval "$(zoxide init zsh)"
 
 # autocompletions
 autoload -Uz compinit
