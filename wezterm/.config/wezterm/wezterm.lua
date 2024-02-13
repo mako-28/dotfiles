@@ -64,9 +64,19 @@ return {
       action = wezterm.action.AdjustPaneSize { 'Down', 5 },
     },
     {
+      key = 'J',
+      mods = 'LEADER',
+      action = wezterm.action.AdjustPaneSize { 'Down', 10 },
+    },
+    {
       key = 'k',
       mods = 'LEADER',
       action = wezterm.action.AdjustPaneSize { 'Up', 5 },
+    },
+    {
+      key = 'K',
+      mods = 'LEADER',
+      action = wezterm.action.AdjustPaneSize { 'Up', 10 },
     },
     {
       key = 'l',
@@ -80,3 +90,4 @@ return {
     },
   },
 }
+
