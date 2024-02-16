@@ -20,3 +20,7 @@ insert = "bar"
 
 [editor.indent-guides]
 render = true
+
+[keys.normal.g]
+"z" = ["hsplit", "jump_view_up", "goto_definition"]
+"Z" = ["vsplit", "jump_view_up", "goto_definition"]
