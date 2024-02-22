@@ -8,6 +8,8 @@
   pager = "less -r"
   fsmonitor = false
   ignorecase = false
+[commit]
+  verbose = true
 [alias]
   b  = branch
   d  = diff
@@ -31,7 +33,8 @@
 [push]
   default = simple
 [diff]
-    compactionHeuristic = true
+  compactionHeuristic = true
+  algorithm = histogram  
 [diff "xlsx"]
   binary = true
   textconv = $GOPATH/bin/git-xlsx-textconv
@@ -49,3 +52,9 @@
   tool = code
 [mergetool "code"]
   cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[transfer]
+  fsckobjects = true
+[fetch]
+  fsckobjects = true
+[receive]
+  fsckobjects = true
