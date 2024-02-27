@@ -38,7 +38,7 @@ FZF-EOF"
 
 # 履歴検索用
 function select-history() {
-  BUFFER=$(history -n -r 1 | fzf --ansi --reverse --no-sort +m --query "$LBUFFER" --prompt="History > " | sed -e 's/\\\\/\\/g')
+  BUFFER=$(history -n -r 1 | fzf --ansi --reverse +m --query "$LBUFFER" --prompt="History > " | sed -e 's/\\\\/\\/g')
   CURSOR=$#BUFFER
 }
 
