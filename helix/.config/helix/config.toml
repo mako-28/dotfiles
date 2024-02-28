@@ -7,10 +7,6 @@ color-modes = true
 auto-save = true
 mouse = true
 
-[editor.file-picker]
-hidden = false
-git-ignore = false
-
 [editor.statusline]
 left = ["mode", "spinner", "version-control", "spacer", "separator", "file-name", "read-only-indicator", "file-modification-indicator"]
 right = ["diagnostics", "selections", "register", "position", "file-encoding", "total-line-numbers"]
