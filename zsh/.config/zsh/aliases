@@ -6,6 +6,6 @@ alias ls='ls --color'
 alias ll='ls -l'
 alias la='ls -a'
 alias lal='ls -al'
-alias hx='JAVA_HOME=/Users/makoto/.asdf/installs/java/temurin-17.0.8+7 hx'
+alias hx='JAVA_HOME=/Users/makoto/.asdf/installs/java/temurin-17.0.10+7 hx'
 alias grep='ugrep'
 
