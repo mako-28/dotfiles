@@ -21,7 +21,7 @@ fbr() {
   local branches branch
   branches=$(git --no-pager branch -vv) &&
   branch=$(echo "$branches" | fzf --ansi --reverse +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+  git switch $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
 # fshow - git commit browser
