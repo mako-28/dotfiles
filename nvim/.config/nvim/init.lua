@@ -148,6 +148,8 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+vim.opt.termguicolors = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -734,6 +736,15 @@ require('lazy').setup {
 
       -- You can configure highlights by doing something like
       vim.cmd.hi 'Comment gui=none'
+
+      require('tokyonight').setup {
+        styles = {
+          -- Style to be applied to different syntax groups
+          -- Value is any valid attr-list value for `:help nvim_set_hl`
+          comments = { italic = false },
+          keywords = { italic = false },
+        },
+      }
     end,
   },
 
