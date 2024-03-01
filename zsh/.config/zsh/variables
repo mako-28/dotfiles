@@ -1,5 +1,5 @@
-export EDITOR=vim
-export SUDO_EDITOR=vim
+export EDITOR=nvim
+export SUDO_EDITOR=nvim
 if [[ -f ${HOME}/.github_api_token ]]; then
     export HOMEBREW_GITHUB_API_TOKEN=$(cat ${HOME}/.github_api_token)
 fi

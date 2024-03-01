@@ -8,4 +8,4 @@ alias la='ls -a'
 alias lal='ls -al'
 alias hx='JAVA_HOME=/Users/makoto/.asdf/installs/java/temurin-17.0.10+7 hx'
 alias grep='ugrep'
-
+alias vi='JAVA_HOME=/Users/makoto/.asdf/installs/java/temurin-17.0.10+7 nvim'
