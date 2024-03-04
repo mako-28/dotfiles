@@ -148,7 +148,22 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+-- my configs
 vim.opt.termguicolors = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.wrap = false
+vim.opt.list = true
+
+-- my commands
+vim.api.nvim_create_user_command('RelPath', function ()
+  local path = vim.fn.expand('%')
+  vim.fn.setreg('+', path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
