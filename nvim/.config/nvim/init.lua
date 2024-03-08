@@ -778,6 +778,8 @@ require('lazy').setup {
           comments = { italic = false },
           keywords = { italic = false },
         },
+        vim.api.nvim_set_hl(0, 'Keyword', { fg='#7dcfff' }),
+        vim.api.nvim_set_hl(0, '@keyword', { fg='#9d7cd8' }),
       }
     end,
   },
