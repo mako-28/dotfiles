@@ -158,6 +158,10 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.opt.list = true
 
+--- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- my commands
 vim.api.nvim_create_user_command('RelPath', function ()
   local path = vim.fn.expand('%')
@@ -834,6 +838,12 @@ require('lazy').setup {
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
+  },
+  {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require('nvim-tree').setup()
+    end
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
