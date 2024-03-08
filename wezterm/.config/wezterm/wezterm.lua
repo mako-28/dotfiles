@@ -13,6 +13,7 @@ return {
   hide_tab_bar_if_only_one_tab = true,
   adjust_window_size_when_changing_font_size = false,
   macos_forward_to_ime_modifier_mask = "SHIFT|CTRL",
+  scrollback_lines = 10000,
 
 
   wezterm.on("gui-startup", function()
