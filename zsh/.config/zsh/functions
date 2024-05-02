@@ -10,6 +10,7 @@ function attach_ssh_auth_sock() {
 # vscodeから起動されてorphanedになったjavaを止める
 function kill-java() {
   pkill -P 1 -f "java .*/\.vscode"
+  pkill -P 1 -f "java .* \.GradleDaemon"
   ps -ef | grep java | grep -v grep
 }
 
