@@ -58,3 +58,6 @@
   fsckobjects = true
 [receive]
   fsckobjects = true
+[rebase]
+  autostash = true
+  autosquash = true
