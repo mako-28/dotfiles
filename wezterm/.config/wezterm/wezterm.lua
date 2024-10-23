@@ -3,7 +3,8 @@ local mux = wezterm.mux
 
 return {
   font = wezterm.font_with_fallback({
-    "UDEV Gothic 35NF",
+    "Moralerspace Neon NF",
+--    "UDEV Gothic 35NF",
   }),
   font_size = 14.5,
   line_height = 1.2,
@@ -14,7 +15,6 @@ return {
   adjust_window_size_when_changing_font_size = false,
   macos_forward_to_ime_modifier_mask = "SHIFT|CTRL",
   scrollback_lines = 10000,
-
 
   wezterm.on("gui-startup", function()
     local tab, pane, window = mux.spawn_window{}
