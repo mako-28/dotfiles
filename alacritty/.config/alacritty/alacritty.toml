@@ -1,0 +1,17 @@
+# ====================== GENERAL ======================
+# Import additional configuration files
+import = ["~/.config/alacritty/ayu_dark.toml"]
+
+[window]
+padding = { x = 10, y = 10 }
+
+[scrolling]
+history = 100000
+
+[font]
+
+# Normal font style
+normal = { family = "Moralerspace Neon NF", style = "Regular" }
+size = 14.5
+offset = { x = 0, y = 3 }
+
