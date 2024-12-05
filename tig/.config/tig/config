@@ -24,3 +24,7 @@ set commit-order = default
 
 # Optionally, use the old and faster but less acurate graph renderer
 #set main-view-commit-title-graph = v1
+
+# refresh(test)
+set refresh-mode = auto
+
