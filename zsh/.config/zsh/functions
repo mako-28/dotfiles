@@ -90,7 +90,11 @@ bindkey "^ga" select-git-commit-all
 
 # 履歴検索用
 function select-history() {
-  BUFFER=$(history -n -r 1 | fzf --ansi --no-sort --reverse --scheme=history -e +m --query "$LBUFFER" --prompt="History > " | sed -e 's/\\\\/\\/g')
+  BUFFER=$(
+    history -n -r 1 \
+    | fzf --ansi --no-sort --reverse --scheme=history -e +m --query "$LBUFFER" --prompt="History > " \
+    | sed -e 's/\\\\/\\/g' -e 's/\\n/;/g' \
+  )
   CURSOR=$#BUFFER
 }
 
