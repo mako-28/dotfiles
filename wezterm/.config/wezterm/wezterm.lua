@@ -19,6 +19,13 @@ return {
   wezterm.on("gui-startup", function()
     local tab, pane, window = mux.spawn_window{}
     window:gui_window():maximize()
+
+    -- 左右分割（2:1の割合）
+    local right_pane = pane:split { direction = "Right", size = 0.3333 }
+
+    -- 右側を上下分割（2:1の割合）
+    right_pane:split { direction = "Bottom", size = 0.3333 }
+
   end),
 
   -- timeout_milliseconds defaults to 1000 and can be omitted
