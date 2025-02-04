@@ -3,8 +3,8 @@ local mux = wezterm.mux
 
 return {
   font = wezterm.font_with_fallback({
-    "Moralerspace Neon NF",
---    "UDEV Gothic 35NF",
+--    "Moralerspace Neon NF",
+    "UDEV Gothic 35NF",
   }),
   font_size = 14.5,
   line_height = 1.2,
