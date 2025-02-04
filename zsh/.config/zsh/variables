@@ -4,3 +4,6 @@ export JDTLS_JVM_ARGS="-javaagent:$HOME/lima/src/lib/lombok.jar"
 if [[ -f ${HOME}/.github_api_token ]]; then
     export HOMEBREW_GITHUB_API_TOKEN=$(cat ${HOME}/.github_api_token)
 fi
+
+#
+export COPYFILE_DISABLE=1
