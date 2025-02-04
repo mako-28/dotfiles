@@ -5,12 +5,17 @@ set main-view = id date author commit-title:graph=yes,refs=yes
 set vertical-split = no
 
 set wrap-lines = yes
+
+bind generic <Ctrl-b> move-page-up
+bind generic <Ctrl-f> move-page-down
+
 bind main    R !git rebase -i %(commit)
 bind main    <Ctrl-R> !git rebase --continue
 
 bind diff    R !git rebase -i %(commit)
 
 bind status  a !?git commit --amend
+bind status  S !?git stash save "%(prompt Enter stash comment: )"
 
 # Use Git's default (reverse chronological) order, never automatically
 # use topo-order for the commit graph
@@ -28,3 +33,9 @@ set commit-order = default
 # refresh(test)
 set refresh-mode = auto
 
+# color
+color cursor black cyan
+
+# datetime format
+set main-view-date = custom
+set main-view-date-format = "%Y-%m-%d %H:%M"
