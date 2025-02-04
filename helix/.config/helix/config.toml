@@ -7,6 +7,9 @@ color-modes = true
 auto-save = true
 mouse = true
 
+[editor.file-picker]
+hidden = false
+
 [editor.statusline]
 left = ["mode", "spinner", "version-control", "spacer", "separator", "file-name", "read-only-indicator", "file-modification-indicator"]
 right = ["diagnostics", "selections", "register", "position", "file-encoding", "total-line-numbers"]
@@ -16,6 +19,13 @@ insert = "bar"
 
 [editor.indent-guides]
 render = true
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[editor.lsp]
+display-messages = true
+
 
 [keys.normal.g]
 "z" = ["hsplit", "jump_view_up", "goto_definition"]
