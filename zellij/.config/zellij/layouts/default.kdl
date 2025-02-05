@@ -1,9 +1,15 @@
 layout {
-    pane split_direction="vertical" size="60%" {
-        pane
-        pane split_direction="horizontal" size="40%" {
-            pane
+    pane size=1 borderless=true {
+        plugin location="tab-bar"
+    }
+    pane split_direction="vertical" {
+        pane size="60%"
+        pane split_direction="horizontal" {
+            pane size="60%"
             pane
         }
+    }
+    pane size=1 borderless=true {
+        plugin location="status-bar"
     }
 }
