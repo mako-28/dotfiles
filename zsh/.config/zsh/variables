@@ -1,3 +1,4 @@
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export EDITOR=nvim
 export SUDO_EDITOR=nvim
 export JDTLS_JVM_ARGS="-javaagent:$HOME/lima/src/lib/lombok.jar"
