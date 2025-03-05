@@ -30,8 +30,10 @@
 [push]
   default = simple
 [diff]
-  compactionHeuristic = true
-  algorithm = histogram  
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
@@ -39,10 +41,15 @@
   required = true
 [rerere]
   enabled = true
+  autoupdate = true
 [pull]
   ff = only
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
   tool = code
 [mergetool "code"]
   cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
@@ -55,3 +62,11 @@
 [rebase]
   autostash = true
   autosquash = true
+  updateRefs = true
+[column]
+  # ブランチ一覧などを複数列表示
+  ui = auto
+[branch]
+  sort = "-committerdate"
+[tag]
+  sort = version:refname
