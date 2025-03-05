@@ -1,0 +1,57 @@
+[init]
+  defaultBranch = main
+[core]
+  sharedRepository = group
+  pager = "less -r"
+  fsmonitor = false
+  ignorecase = false
+[commit]
+  verbose = true
+[alias]
+  b  = branch
+  d  = diff
+  l  = log --oneline
+  s  = status
+  co = checkout
+  sw = switch
+  save = !git add -A && git commit --no-verify  -m'SAVEPOINT'
+  wip = !git add -u && git commit -m "WIP"
+  undo = reset HEAD~1 --mixed
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  n  = number --column
+  na  = number add
+  refresh = !git fetch origin && git remote prune origin
+  p  = pull
+  pm = pull --rebase
+  push = push --force-with-lease --force-if-includes
+  prdiff = !sh -c 'git diff -r ${1:-master}...' -
+[ghq]
+  root = ~/src
+[push]
+  default = simple
+[diff]
+  compactionHeuristic = true
+  algorithm = histogram  
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[rerere]
+  enabled = true
+[pull]
+  ff = only
+[merge]
+  conflictstyle = diff3
+  tool = code
+[mergetool "code"]
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[transfer]
+  fsckobjects = true
+[fetch]
+  fsckobjects = true
+[receive]
+  fsckobjects = true
+[rebase]
+  autostash = true
+  autosquash = true
