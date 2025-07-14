@@ -21,8 +21,7 @@ language-servers = [
   "typescript-language-server",
   "vscode-eslint-language-server",
 ]
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
-auto-format = true
+formatter = { command = "prettier" }
 
 [[language]]
 name = "tsx"
@@ -30,8 +29,7 @@ language-servers = [
   "typescript-language-server",
   "vscode-eslint-language-server",
 ]
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
-auto-format = true
+formatter = { command = "pnpm prettier" }
 
 [[language]]
 name = "javascript"
@@ -39,8 +37,7 @@ language-servers = [
   "typescript-language-server",
   "vscode-eslint-language-server",
 ]
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
-auto-format = true
+formatter = { command = "prettier" }
 
 [[language]]
 name = "jsx"
@@ -48,27 +45,22 @@ language-servers = [
   "typescript-language-server",
   "vscode-eslint-language-server",
 ]
-formatter = { command = "prettier", args = ["--parser", "typescript"] }
-auto-format = true
+formatter = { command = "prettier" }
 
 
 [[language]]
 name = "json"
-formatter = { command = "prettier", args = ["--parser", "json"] }
-auto-format = true
+formatter = { command = "prettier" }
 
 [[language]]
 name = "css"
-formatter = { command = "prettier", args = ["--parser", "css"] }
-auto-format = true
+formatter = { command = "prettier" }
 
 [[language]]
 name = "html"
-formatter = { command = "prettier", args = ["--parser", "html"] }
-auto-format = true
+formatter = { command = "prettier" }
 
 [[language]]
 name = "markdown"
-formatter = { command = "prettier", args = ["--parser", "markdown"] }
-auto-format = true
+formatter = { command = "prettier" }
 
