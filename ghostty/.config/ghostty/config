@@ -6,3 +6,8 @@ adjust-cell-height = 15%
 # dlig (合字) を無効にしないと「ます」が「〼」で表示される。
 # ref. https://apribase.net/2024/12/28/ghostty/
 font-feature = -dlig
+
+# ref. https://github.com/ghostty-org/ghostty/discussions/3483
+macos-option-as-alt = true
+keybind = alt+left=unbind
+keybind = alt+right=unbind
