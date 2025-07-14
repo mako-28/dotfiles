@@ -12,6 +12,8 @@ bind generic <Ctrl-f> move-page-down
 bind main    R !git rebase -i %(commit)
 bind main    <Ctrl-R> !git rebase --continue
 
+bind main    C !git cherry-pick %(commit)
+
 bind diff    R !git rebase -i %(commit)
 
 bind status  a !?git commit --amend
