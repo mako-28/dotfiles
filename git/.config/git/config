@@ -70,3 +70,7 @@
   sort = "-committerdate"
 [tag]
   sort = version:refname
+
+# 個別config
+[include]
+  path = ~/.config/local/git/config
