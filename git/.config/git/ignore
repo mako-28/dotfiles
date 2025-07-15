@@ -27,3 +27,5 @@ Temporary Items
 # backup files
 *~
 
+# claude code
+**/.claude/settings.local.json
