@@ -1,22 +1,40 @@
-# make ssh_auth_sock for tmux/screen
-function attach_ssh_auth_sock() {
-    if [ ! -z "$SSH_AUTH_SOCK" -a "$SSH_AUTH_SOCK" != "$HOME/.ssh/agent_sock" ] ; then
-        unlink "$HOME/.ssh/agent_sock" 2>/dev/null
-        ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
-        export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
-    fi
-}
+if command -v fzf >/dev/null 2>&1; then
+  # 入力を下じゃなくて上に配置
+  export FZF_DEFAULT_OPTS="--layout=reverse --height=40%"
 
-# vscodeから起動されてorphanedになったjavaを止める
-function kill-java() {
-  pkill -P 1 -f "java .*/\.vscode"
-  pkill -P 1 -f "java .* \.GradleDaemon"
-  ps -ef | grep java | grep -v grep
-}
+  # fzfの初期化スクリプトを読み込む
+  # ここにデフォルトで用意しているfunctionがある
+  eval "$(fzf --zsh)"
 
-# fzf-git
-## via. https://github.com/junegunn/fzf/wiki/Examples#git
+  # fzfを使った履歴検索のキーバインディング
+  zle -N fzf-history-widget # fzf --zsh が提供するウィジェットを使う
+  bindkey '^r' fzf-history-widget
+else
+  # fzf コマンドが存在しない場合の代替 (オプション)
+  bindkey '^r' history-incremental-search-backward
+fi
 
+# ~/.config/zsh/tools/fzf.zsh
+
+# fzf コマンドが存在しない場合
+if ! command -v fzf >/dev/null 2>&1; then
+    bindkey '^r' history-incremental-search-backward
+    return # ここでおしまい
+fi
+
+# --- fzf コマンドが存在する場合のみ、以下の設定が適用される ---
+
+# --layout=reverse で入力プロンプトを上部に表示
+export FZF_DEFAULT_OPTS="--layout=reverse --height=40%"
+
+# fzfの初期化スクリプトを読み込む
+eval "$(fzf --zsh)"
+
+# fzfを使った履歴検索のキーバインディング (fzf --zsh が提供するウィジェット)
+zle -N fzf-history-widget
+bindkey '^r' fzf-history-widget
+
+# --- Git + FZF 連携関数群 ---
 # fbr - checkout git branch
 fbr() {
   local branches branch
@@ -37,14 +55,13 @@ fshow() {
 FZF-EOF"
 }
 
-# git branch検索
-# ref. https://www.mizdra.net/entry/2024/10/19/172323
-user_name=$(git config user.name)
-fmt="\
+# git branch検索 (ユーザー名で色分け)
+function select-git-branch-friendly() {
+  local user_name=$(git config user.name 2>/dev/null) # 関数内で取得し、エラーを抑制
+  local fmt="\
 %(if:equals=$user_name)%(authorname)%(then)%(color:default)%(else)%(color:brightred)%(end)%(refname:short)|\
 %(committerdate:relative)|\
 %(subject)"
-function select-git-branch-friendly() {
   selected_branch=$(
     git branch --sort=-committerdate --format=$fmt --color=always \
     | column -ts'|' \
@@ -55,11 +72,9 @@ function select-git-branch-friendly() {
   CURSOR=$#LBUFFER+$#selected_branch
   zle redisplay
 }
-zle -N select-git-branch-friendly
-bindkey '^gb' select-git-branch-friendly
+zle -N select-git-branch-friendly # ZLEウィジェットとして登録
 
 # git commit検索
-# ref. https://zenn.dev/miyanokomiya/articles/5931a3af9a710d
 function select-git-commit() {
   selected_commit=$(
     git log -n1000 --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" \
@@ -74,35 +89,14 @@ function select-git-commit() {
     | grep -o "[a-f0-9]{7}" \
     | tr '\n' ' ' \
   )
-  echo ${selected_commit}
+  echo ${selected_commit} # 複数選択の場合などデバッグ用に残す
   BUFFER="${LBUFFER}${selected_commit}${RBUFFER}"
   CURSOR=$#LBUFFER+$#selected_commit
   zle redisplay
 }
-zle -N select-git-commit
-bindkey "^gc" select-git-commit
+zle -N select-git-commit # ZLEウィジェットとして登録
 
 function select-git-commit-all() {
   select-git-commit "--all"
 }
-zle -N select-git-commit-all
-bindkey "^ga" select-git-commit-all
-
-# 履歴検索用
-function select-history() {
-  BUFFER=$(
-    history -n -r 1 \
-    | fzf --ansi --no-sort --reverse --scheme=history -e +m --query "$LBUFFER" --prompt="History > " \
-    | sed -e 's/\\\\/\\/g' -e 's/\\n/;/g' \
-  )
-  CURSOR=$#BUFFER
-}
-
-# start lima with binfmt
-function limastart() {
-  if [ -z ${1:-} ]; then
-    (ulimit -n 1048576 && limactl start default && lima sudo docker run --privileged --rm tonistiigi/binfmt --install all)
-  else
-    (ulimit -n 1048576 && limactl start $1)
-  fi
-}
+zle -N select-git-commit-all # ZLEウィジェットとして登録
