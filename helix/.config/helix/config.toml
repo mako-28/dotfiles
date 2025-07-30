@@ -12,7 +12,7 @@ hidden = false
 
 [editor.statusline]
 left = ["mode", "spinner", "version-control", "spacer", "separator", "file-name", "read-only-indicator", "file-modification-indicator"]
-right = ["diagnostics", "selections", "register", "position", "file-encoding", "total-line-numbers", "primary-selection-length"]
+right = ["diagnostics", "file-type", "selections", "register", "position", "file-encoding", "total-line-numbers", "primary-selection-length"]
 
 [editor.cursor-shape]
 insert = "bar"
