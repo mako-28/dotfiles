@@ -9,6 +9,3 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lal='ls -al'
 alias grep='ugrep'
-alias vim="JAVA_HOME=${DEFAULT_JAVA} nvim"
-alias vi='nvim -u NONE'
-alias hx="JAVA_HOME=${DEFAULT_JAVA} hx"

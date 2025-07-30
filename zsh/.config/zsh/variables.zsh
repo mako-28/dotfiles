@@ -1,6 +1,6 @@
 # editor
-export EDITOR=hx
-export SUDO_EDITOR=hx
+export EDITOR=vi
+export SUDO_EDITOR=vi
 
 # for docker-compose
 export UID
