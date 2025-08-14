@@ -1,3 +1,7 @@
+[language-server.jdtls]
+command = "jdtls"
+args = ["--jvm-arg=-javaagent:/home/makoto/.local/lib/lombok.jar"]
+
 [language-server.vscode-eslint-language-server]
 command = "/Users/makoto/.asdf/shims/vscode-eslint-language-server"
 args = ["--stdio"]
