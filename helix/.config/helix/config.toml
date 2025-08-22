@@ -26,6 +26,8 @@ cursor-line = "warning"
 [editor.lsp]
 display-messages = true
 
+[editor.soft-wrap]
+enable = true
 
 [keys.normal.g]
 "z" = ["hsplit", "jump_view_up", "goto_definition"]
