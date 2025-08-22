@@ -1,6 +1,11 @@
 [language-server.jdtls]
-command = "jdtls"
-args = ["--jvm-arg=-javaagent:/home/makoto/.local/lib/lombok.jar"]
+command = "sh"
+args = [
+  "-c",
+  '''
+  exec jdtls --jvm-arg=-javaagent:"$HOME/.local/lib/lombok.jar"
+  '''
+]
 
 [language-server.vscode-eslint-language-server]
 command = "/Users/makoto/.asdf/shims/vscode-eslint-language-server"
