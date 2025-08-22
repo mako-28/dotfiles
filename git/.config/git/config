@@ -25,6 +25,16 @@
   pm = pull --rebase
   push = push --force-with-lease --force-if-includes
   prdiff = !sh -c 'git diff -r ${1:-master}...' -
+  # デフォルトブランチ(origin/HEAD)を基点に新ブランチを作成
+  new = "!f() { \
+    base=$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'); \
+    git fetch origin && git switch -c \"$1\" origin/$base; \
+  }; f"
+  # 現在のブランチを最新のデフォルトブランチ(origin/HEAD)にリベース
+  up = "!f() { \
+    base=$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'); \
+    git fetch origin && git rebase origin/$base; \
+  }; f"
 [ghq]
   root = ~/src
 [push]
