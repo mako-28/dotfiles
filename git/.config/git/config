@@ -35,6 +35,11 @@
     base=$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'); \
     git fetch origin && git rebase origin/$base; \
   }; f"
+  # 最新のmainへ移動(ブランチは作らない)
+  current = "!f() { \
+    base=$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'); \
+    git fetch origin && git checkout origin/$base; \
+  }; f"
 [ghq]
   root = ~/src
 [push]
