@@ -1,19 +1,3 @@
-if command -v fzf >/dev/null 2>&1; then
-  # 入力を下じゃなくて上に配置
-  export FZF_DEFAULT_OPTS="--layout=reverse --height=40%"
-
-  # fzfの初期化スクリプトを読み込む
-  # ここにデフォルトで用意しているfunctionがある
-  eval "$(fzf --zsh)"
-
-  # fzfを使った履歴検索のキーバインディング
-  zle -N fzf-history-widget # fzf --zsh が提供するウィジェットを使う
-  bindkey '^r' fzf-history-widget
-else
-  # fzf コマンドが存在しない場合の代替 (オプション)
-  bindkey '^r' history-incremental-search-backward
-fi
-
 # ~/.config/zsh/tools/fzf.zsh
 
 # fzf コマンドが存在しない場合
