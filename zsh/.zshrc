@@ -24,5 +24,8 @@ if [ -d ~/.config/local/zsh ]; then
   done
 fi
 
+# keybind
+source ~/.config/zsh/keybinds.zsh
+
 # 起動時間測定用
 #zprof
