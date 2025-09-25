@@ -62,8 +62,8 @@ zle -N select-git-branch-friendly # ZLEウィジェットとして登録
 function select-git-commit() {
   selected_commit=$(
     git log -n1000 --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" \
-        set -- $(echo "$@" | grep -o "[a-f0-9]{7}" | head -1);
     | fzf -m --ansi --no-sort --reverse --height=100% --preview-window=down --tiebreak=index --preview 'f() {
+        set -- $(echo "$@" | grep -Eo "[a-f0-9]{7,}" | head -1);
         if [ $1 ]; then
           git show --color $1
         else
