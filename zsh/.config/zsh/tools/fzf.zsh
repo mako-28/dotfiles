@@ -31,7 +31,7 @@ fbr() {
 fshow() {
   git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+  fzf --ansi --no-sort --reverse --height=100% --tiebreak=index --bind=ctrl-s:toggle-sort \
       --bind "ctrl-m:execute:
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
                 xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
@@ -49,7 +49,7 @@ function select-git-branch-friendly() {
   selected_branch=$(
     git branch --sort=-committerdate --format=$fmt --color=always \
     | column -ts'|' \
-    | fzf --ansi --exact --reverse --preview-window=down --preview='git log --oneline --graph --decorate --color=always -50 {+1}' \
+    | fzf --ansi --exact --reverse --height=100% --preview-window=down --preview='git log --oneline --graph --decorate --color=always -50 {+1}' \
     | awk '{print $1}' \
   )
   BUFFER="${LBUFFER}${selected_branch}${RBUFFER}"
@@ -62,8 +62,8 @@ zle -N select-git-branch-friendly # ZLEウィジェットとして登録
 function select-git-commit() {
   selected_commit=$(
     git log -n1000 --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" \
-    | fzf -m --ansi --no-sort --reverse --preview-window=down --tiebreak=index --preview 'f() {
         set -- $(echo "$@" | grep -o "[a-f0-9]{7}" | head -1);
+    | fzf -m --ansi --no-sort --reverse --height=100% --preview-window=down --tiebreak=index --preview 'f() {
         if [ $1 ]; then
           git show --color $1
         else
