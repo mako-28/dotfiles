@@ -9,7 +9,7 @@ fi
 # --- fzf コマンドが存在する場合のみ、以下の設定が適用される ---
 
 # --layout=reverse で入力プロンプトを上部に表示
-export FZF_DEFAULT_OPTS="--layout=reverse --height=40%"
+export FZF_DEFAULT_OPTS="--layout=reverse --height=50%"
 
 # fzfの初期化スクリプトを読み込む
 eval "$(fzf --zsh)"
