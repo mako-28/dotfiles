@@ -8,7 +8,7 @@ args = [
 ]
 
 [language-server.vscode-eslint-language-server]
-command = "/Users/makoto/.asdf/shims/vscode-eslint-language-server"
+command = "vscode-eslint-language-server"
 args = ["--stdio"]
 
 [language-server.vscode-eslint-language-server.config]
