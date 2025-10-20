@@ -12,6 +12,13 @@
 
 shell = "zsh"
 
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+[templates]
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
+
+
 [plugins]
 
 # For example:
@@ -21,12 +28,15 @@ shell = "zsh"
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+apply = ["defer"]
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
+apply = ["defer"]
 
 [plugins.fast-syntax-highlighting]
 github = 'zdharma/fast-syntax-highlighting'
+apply = ["defer"]
 
 [plugins.zsh-async]
 github = "mafredri/zsh-async"
