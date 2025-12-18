@@ -84,3 +84,68 @@ function select-git-commit-all() {
   select-git-commit "--all"
 }
 zle -N select-git-commit-all # ZLEウィジェットとして登録
+
+function gtw() {
+  # git管理下チェック
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    echo "Not inside a git repository." >&2
+    return 1
+  fi
+
+  # worktree全体の件数を数える
+  local total
+  total=$(git worktree list --porcelain | grep -c '^worktree ')
+  # メイン1件のみなら何もせず終了
+  if [[ -z "${total}" || "${total}" -le 1 ]]; then
+    return 0
+  fi
+
+  # fzfに出す一覧を作成（branchが無い=メイン/DETACHEDも拾う）
+  local wt_list
+  wt_list=$(git worktree list --porcelain | awk '
+    /^worktree / { path=$2; branch="" }
+    /^branch /   { branch=$2 }
+    /^$/         { if (path!="") { print (branch==""?"(MAIN/DETACHED)":branch) "\t" path; path=""; branch="" } }
+    END          { if (path!="") print (branch==""?"(MAIN/DETACHED)":branch) "\t" path }
+  ')
+
+  # 念のため空なら終了
+  [[ -z "${wt_list}" ]] && return 0
+
+  # fzfで選択（2列目のpathをプレビュー/移動に利用）
+  local selection
+  selection=$(echo "${wt_list}" \
+    | fzf --ansi --no-sort --prompt="Select worktree> " \
+          --with-nth=1,2 \
+          --preview='cd -- {2} 2>/dev/null && git status -sb 2>/dev/null || echo "Not a git dir: {2}"' \
+          --preview-window=down:50%)
+
+  [[ -z "${selection}" ]] && return 0
+
+  local dir
+  dir=$(echo "${selection}" | cut -f2)
+
+  if [[ -d "${dir}" ]]; then
+    cd "${dir}" || return 1
+    REPLY="Moved to $dir"
+    if ! zle >/dev/null 2>&1; then
+      print -r -- "$REPLY"
+    fi
+  else
+    echo "Directory not found: ${dir}" >&2
+    return 1
+  fi
+}
+
+function select-git-worktree() {
+  emulate -L zsh
+  setopt localoptions noshwordsplit pipefail
+
+  zle -I
+  REPLY=""
+  gtw
+  [[ -n "$REPLY" ]] && zle -M -- "$REPLY"
+  zle reset-prompt
+}
+zle -N select-git-worktree
+
