@@ -8,6 +8,7 @@ set wrap-lines = yes
 
 bind generic <Ctrl-b> move-page-up
 bind generic <Ctrl-f> move-page-down
+bind generic <Ctrl-g> refresh
 
 bind main    R !git rebase -i %(commit)
 bind main    <Ctrl-R> !git rebase --continue
