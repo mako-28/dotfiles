@@ -145,7 +145,8 @@ function select-git-worktree() {
   REPLY=""
   gtw
   [[ -n "$REPLY" ]] && zle -M -- "$REPLY"
-  zle reset-prompt
+  (( $+functions[prompt_pure_async_tasks] )) && prompt_pure_async_tasks
+  zle -R
 }
 zle -N select-git-worktree
 
