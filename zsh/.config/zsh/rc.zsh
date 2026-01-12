@@ -4,15 +4,6 @@ bindkey -e # Emacs風キーバインディング
 # 言語とロケール
 export LANG="ja_JP.UTF-8"
 
-# cdr (ディレクトリ履歴移動) 設定
-autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
-autoload -Uz colors && colors
-add-zsh-hook chpwd chpwd_recent_dirs
-zstyle ':chpwd:*' recent-dirs-max 5000
-zstyle ':chpwd:*' recent-dirs-default yes
-zstyle ':completion:*' recent-dirs-insert both
-zstyle ":completion:*:commands" rehash 1
-
 # 補完設定
 autoload -Uz compinit
 compinit -u
