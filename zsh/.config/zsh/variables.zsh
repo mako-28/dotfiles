@@ -10,3 +10,6 @@ export COPYFILE_DISABLE=1
 
 # for less
 export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
+
+# path
+export PATH="${HOME}/.local/bin:${PATH}"
