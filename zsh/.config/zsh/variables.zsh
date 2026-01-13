@@ -13,3 +13,6 @@ if [[ -z "${DEFAULT_JAVA}" ]]; then # Only set if not already defined
     DEFAULT_JAVA=$(dirname $(dirname $(readlink -f $(which java))))
   fi
 fi
+
+# for less
+export LESSHISTFILE="${XDG_STATE_HOME}/less/history"
