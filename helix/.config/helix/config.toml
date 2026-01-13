@@ -34,6 +34,7 @@ enable = true
 "Z" = ["vsplit", "jump_view_up", "goto_definition"]
 
 [keys.normal]
+"R" = ":reload"
 C-y = [
   ':sh rm -f /tmp/unique-file',
   ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
