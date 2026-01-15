@@ -3,7 +3,7 @@ command = "sh"
 args = [
   "-c",
   '''
-  exec jdtls --jvm-arg=-javaagent:"$HOME/.local/lib/lombok.jar"
+  exec $HOME/.local/bin/jdtls --jvm-arg=-javaagent:"$HOME/.local/lib/lombok.jar"
   '''
 ]
 
