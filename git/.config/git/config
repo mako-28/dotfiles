@@ -86,6 +86,8 @@
   sort = "-committerdate"
 [tag]
   sort = version:refname
+[wt] # git-wt
+  basedir = ".worktrees"
 
 # 個別config
 [include]
