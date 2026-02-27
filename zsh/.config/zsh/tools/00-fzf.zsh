@@ -85,3 +85,21 @@ function select-git-commit-all() {
 }
 zle -N select-git-commit-all # ZLEウィジェットとして登録
 
+# ghqの一覧からリポジトリを選択して移動
+function ghq-fzf() {
+  # ghq list からディレクトリを選択
+  local repo=$(ghq list --full-path | fzf --query "$LBUFFER" --preview 'ls -F {}')
+
+  # 選択したディレクトリがあれば移動
+  if [ -n "$repo" ]; then
+    BUFFER="cd ${repo}"
+    zle accept-line
+  fi
+  
+  # ウィジェットとして呼び出した場合の再描画
+  zle reset-prompt
+}
+
+# Ctrl+g に割り当てる設定
+zle -N ghq-fzf
+bindkey '^g' ghq-fzf
