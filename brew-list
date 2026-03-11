@@ -1,6 +1,7 @@
 ast-grep
 bash-language-server
 dockerfile-language-server
+difftastic
 eza
 fd
 fzf
