@@ -41,6 +41,9 @@
     base=$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'); \
     git fetch origin && git checkout origin/$base; \
   }; f"
+  dl = -c diff.external=difft log --ext-diff
+  ds = -c diff.external=difft show --ext-diff
+  dd = -c diff.external=difft diff
 [ghq]
   root = ~/src
 [push]
