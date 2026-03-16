@@ -17,3 +17,7 @@ export PATH="${HOME}/.local/bin:${PATH}"
 # go
 export GOPATH="${HOME}/.local/share/go"
 export GOBIN="${HOME}/.local/bin"
+
+# tmux-fzf
+export FZF_TMUX="1"
+export FZF_TMUX_OPTS="-p 80%"

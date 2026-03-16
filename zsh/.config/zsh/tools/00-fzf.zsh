@@ -49,7 +49,7 @@ function select-git-branch-friendly() {
   selected_branch=$(
     git branch --sort=-committerdate --format=$fmt --color=always \
     | column -ts'|' \
-    | fzf --ansi --exact --reverse --height=100% --preview-window=down --preview='git log --oneline --graph --decorate --color=always -50 {+1}' \
+    | fzf-tmux -p 80% --ansi --exact --reverse --height=100% --preview-window=down --preview='git log --oneline --graph --decorate --color=always -50 {+1}' \
     | awk '{print $1}' \
   )
   BUFFER="${LBUFFER}${selected_branch}${RBUFFER}"
@@ -62,7 +62,7 @@ zle -N select-git-branch-friendly # ZLEウィジェットとして登録
 function select-git-commit() {
   selected_commit=$(
     git log -n1000 --graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" \
-    | fzf -m --ansi --no-sort --reverse --height=100% --preview-window=down --tiebreak=index --preview 'f() {
+    | fzf-tmux -p 80% -m --ansi --no-sort --reverse --height=100% --preview-window=down --tiebreak=index --preview 'f() {
         set -- $(echo "$@" | grep -Eo "[a-f0-9]{7,}" | head -1);
         if [ $1 ]; then
           git show --color $1
@@ -88,7 +88,7 @@ zle -N select-git-commit-all # ZLEウィジェットとして登録
 # ghqの一覧からリポジトリを選択して移動
 function ghq-fzf() {
   # ghq list からディレクトリを選択
-  local repo=$(ghq list --full-path | fzf --query "$LBUFFER" --preview 'ls -F {}')
+  local repo=$(ghq list --full-path | fzf-tmux -p 80% --query "$LBUFFER" --preview 'ls -F {}')
 
   # 選択したディレクトリがあれば移動
   if [ -n "$repo" ]; then

@@ -1,6 +1,6 @@
 git-worktree-wrapper() {
   local option=${1:-}
-  local selected=$(git wt | tail -n +2 | fzf | awk '{print $(NF-1)}')
+  local selected=$(git wt | tail -n +2 | fzf-tmux -p 80% | awk '{print $(NF-1)}')
   
   if [ -n "${selected:-}" ]; then
     git wt ${option} "${selected}"
