@@ -102,4 +102,4 @@ function ghq-fzf() {
 
 # Ctrl+g に割り当てる設定
 zle -N ghq-fzf
-bindkey '^g' ghq-fzf
+bindkey '^gg' ghq-fzf
