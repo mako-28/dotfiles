@@ -42,3 +42,5 @@ C-y = [
   ':open %sh{cat /tmp/unique-file}',
   ':redraw',
 ]
+# 「space + x」で定型コマンドを即座に裏で実行する
+"space" = { x = ":run-shell-command screenshot-exporter --base-dir $(dirname $(realpath '%{buffer_name}'))/\n" }
