@@ -71,5 +71,5 @@ formatter = { command = "prettier" }
 
 [[language]]
 name = "markdown"
-formatter = { command = "prettier" }
+comment-tokens = ["-", "+", "*", "1.", ">", "- [ ]"]
 
