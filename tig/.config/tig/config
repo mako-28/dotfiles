@@ -22,6 +22,8 @@ bind diff	K	:?^diff --git			# Jump to prev (c)hunk
 bind status  a !?git commit --amend
 bind status  S !?git stash save "%(prompt Enter stash comment: )"
 
+bind tree H !tig --follow -- %(file)
+
 # Use Git's default (reverse chronological) order, never automatically
 # use topo-order for the commit graph
 set commit-order = default
